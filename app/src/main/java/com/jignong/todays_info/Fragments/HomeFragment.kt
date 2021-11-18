@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.jignong.todays_info.MainActivity
 import com.jignong.todays_info.databinding.FragmentHomeBinding
+import com.jignong.todays_info.databinding.SpinnerTextBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,10 +32,10 @@ class HomeFragment : Fragment() {
 
     private val weatherUrl = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query="
     private val covid19Url = "https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%EC%BD%94%EB%A1%9C%EB%82%98+%ED%99%95%EC%A7%84%EC%9E%90&oquery=%EC%A7%80%EC%97%AD+%EB%82%A0%EC%94%A8&tqi=hS%2FEPdprvhGss5t4i6Nssssss6C-509210"
-    private val citycovidUrl = "http://ncov.mohw.go.kr/"
 
     private val cityarray = arrayOfNulls<String>(18)
     var weather_city = arrayOf("서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원","충북","충남", "전북", "전남", "경북", "경남", "제주")
+    var covid_city = arrayOf("서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원","충북","충남", "전북", "전남", "경북", "경남", "제주", "검역")
 
     lateinit var mainActivity : MainActivity
 
@@ -57,7 +58,7 @@ class HomeFragment : Fragment() {
 
         //날씨 스피너
         //var weather_city = resources.getStringArray(R.array.weather_city)
-        //var weather_adapter = ArrayAdapter<String>(requireContext(), R.layout.simple_list_item_1, weather_city)
+        //var weather_adapter = ArrayAdapter<String>(requireContext(), R.layout.spinner_text, weather_city)
         var weather_adapter = ArrayAdapter<String>(requireContext(), R.layout.simple_list_item_1, weather_city)
         binding.weatherSpinner.adapter = weather_adapter
         binding.weatherSpinner.setSelection(0)
@@ -128,7 +129,83 @@ class HomeFragment : Fragment() {
             }
         }
 
-//        getCovid(covid19Url, totalcovid_textview)
+        //코로나 스피너
+//        var covid_city = resources.getStringArray(R.array.covid_city)
+//        var covid_adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, covid_city)
+        var covid_adapter = ArrayAdapter<String>(requireContext(), R.layout.simple_list_item_1, covid_city)
+        binding.covidSpinner.adapter = covid_adapter
+        binding.covidSpinner.setSelection(0)
+        binding.covidSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                when (position) {
+                    0 -> {
+                        getCityCovid(covid19Url, covid_textview, 1,1)
+                    }
+                    1 -> {
+                        getCityCovid(covid19Url, covid_textview, 1,5)
+                    }
+                    2 -> {
+                        getCityCovid(covid19Url, covid_textview, 1,4)
+                    }
+                    3 -> {
+                        getCityCovid(covid19Url, covid_textview, 1,3)
+                    }
+                    4 -> {
+                        getCityCovid(covid19Url, covid_textview, 2,6)
+                    }
+                    5 -> {
+                        getCityCovid(covid19Url, covid_textview, 2,2)
+                    }
+                    6 -> {
+                        getCityCovid(covid19Url, covid_textview, 2,7)
+                    }
+                    7 -> {
+                        getCityCovid(covid19Url, covid_textview, 3,2)
+                    }
+                    8 -> {
+                        getCityCovid(covid19Url, covid_textview, 1,2)
+                    }
+                    9 -> {
+                        getCityCovid(covid19Url, covid_textview, 2,3)
+                    }
+                    10 -> {
+                        getCityCovid(covid19Url, covid_textview, 2,1)
+                    }
+                    11 -> {
+                        getCityCovid(covid19Url, covid_textview, 1,7)
+                    }
+                    12 -> {
+                        getCityCovid(covid19Url, covid_textview, 2,5)
+                    }
+                    13 -> {
+                        getCityCovid(covid19Url, covid_textview, 2,8)
+                    }
+                    14 -> {
+                        getCityCovid(covid19Url, covid_textview, 1,8)
+                    }
+                    15 -> {
+                        getCityCovid(covid19Url, covid_textview, 1,6)
+                    }
+                    16 -> {
+                        getCityCovid(covid19Url, covid_textview, 3,1)
+                    }
+                    17 -> {
+                        getCityCovid(covid19Url, covid_textview, 2,4)
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+        }
+
+        getCovid(covid19Url, totalcovid_textview)
 
         mBinding = binding
 
@@ -145,30 +222,40 @@ class HomeFragment : Fragment() {
             val doc = Jsoup.connect(Url + city + "날씨").get()
             val temple = doc.select(".temperature_text")
             val tem = temple.get(0).text().substring(5)
+            val comparison = doc.select("#main_pack > section.sc_new.cs_weather_new._cs_weather > div._tab_flicking > div.content_wrap > div.open > div:nth-child(1) > div > div.weather_info > div > div.temperature_info > p")
+            val summaryarray = comparison.text().split(" ")
 
             CoroutineScope(Dispatchers.Main).launch {
-                textView.text = "$city 의 날씨는 : $tem"
-                //Log.d(TAG, "select : $temple")
+                textView.text = "기온 $tem / ${summaryarray[3]} \n " +
+                        "${summaryarray[0]} ${summaryarray[1]} ${summaryarray[2]}"
+                Log.d(TAG, "$summaryarray")
                 Log.d(TAG, "$city : $tem")
             }
         }
     }
 
-//    private fun getCovid(Url : String , textView: TextView ){
-//        CoroutineScope(Dispatchers.IO).launch {
-//            val doc = Jsoup.connect(Url).get()
-//            val total = doc.select("#content > div.container > div > div.liveboard_layout > div.liveNumOuter > div.liveNum > ul > li:nth-child(1) > span.num")
-//            val totalcovid = total.text().substring(0)
-//            Log.d(TAG, "확진자: $totalcovid")
-//            val today = doc.select("#content > div.container > div > div.liveboard_layout > div.liveNumOuter > div.liveNum > ul > li:nth-child(1) > span.before")
-//            val todaycovid = today.text().split(" ",")")
-//
-//            CoroutineScope(Dispatchers.Main).launch {
-//                textView.text = "총 확진자 :$totalcovid\n오늘의 확진자 :${todaycovid[2]}"
-//                Log.d(TAG, "총 확진자: $totalcovid")
-//                Log.d(TAG, "오늘의 확진자: ${todaycovid[2]}")
-//            }
-//        }
-//    }
+    private fun getCovid(Url : String , textView: TextView ){
+        CoroutineScope(Dispatchers.IO).launch {
+            val doc = Jsoup.connect(Url).get()
+            val covid = doc.select("#_cs_production_type > div > div.main_tab_area > div > div > ul > li.info_01")
+            val total = covid.text().split(" ")
+            CoroutineScope(Dispatchers.Main).launch {
+                textView.text = "확진환자 : ${total[1]} (+${total[2]})"
+                Log.d(TAG, "$total")
+            }
+        }
+    }
+
+    private fun getCityCovid(Url : String, textView: TextView, x : Int, y : Int){
+        CoroutineScope(Dispatchers.IO).launch {
+            val doc = Jsoup.connect(Url).get()
+            val city = doc.select("#_cs_production_type > div > div:nth-child(4) > div > div:nth-child(3) > div:nth-child($x) > div > table > tbody > tr:nth-child($y)")
+            val citytotal = city.text().split(" ")
+            CoroutineScope(Dispatchers.Main).launch {
+                textView.text = "${citytotal[1]} (+${citytotal[2]})"
+                Log.d(TAG, "${citytotal}")
+            }
+        }
+    }
 
 }

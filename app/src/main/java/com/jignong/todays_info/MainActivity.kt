@@ -2,6 +2,7 @@ package com.jignong.todays_info
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.jignong.todays_info.databinding.ActivityMainBinding
