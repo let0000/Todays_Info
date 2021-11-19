@@ -12,10 +12,10 @@
         android:id="@+id/weather_cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         app:cardBackgroundColor="#BFEAC1"
         app:cardCornerRadius="25dp"
         app:cardElevation="10dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -40,7 +40,7 @@
                 android:gravity="center"
                 android:text="기온 0 / 맑음 \n 어제보다 0 높아요"
                 android:textColor="@color/black"
-                android:textSize="30sp" />
+                android:textSize="24sp" />
 
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -70,9 +70,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:gravity="center"
-                android:text="확진자"
+                android:text="확진환자  :  0 ( + 0 )"
                 android:textColor="@color/black"
-                android:textSize="30sp" />
+                android:textSize="24sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -83,19 +83,56 @@
                     android:id="@+id/covid_spinner"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
+                    android:layout_weight="0.1"
                     android:contentDescription="covid_spinner"/>
 
                 <TextView
                     android:id="@+id/coivd_textview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="20dp"
                     android:text="0 (+ 0)"
+                    android:layout_weight="0.9"
                     android:textColor="@color/black"
-                    android:textSize="30sp" />
+                    android:textSize="24sp" />
 
             </LinearLayout>
         </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/news_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardBackgroundColor="#BFEAC1"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/covid_cardview"
+        android:contentDescription="news_cardview">
+
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Spinner
+                android:id="@+id/news_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:contentDescription="news_spinner" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/news_recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
 
     </com.google.android.material.card.MaterialCardView>
 

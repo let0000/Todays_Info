@@ -39,4 +39,13 @@
         <item>경남</item>
         <item>제주</item>
     </string-array>
+
+    <string-array name="category">
+        <item>정치</item>
+        <item>경제</item>
+        <item>사회</item>
+        <item>생활/문화</item>
+        <item>세계</item>
+        <item>IT/과학</item>
+    </string-array>
 </resources>

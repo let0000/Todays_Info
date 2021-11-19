@@ -13,7 +13,10 @@ import android.widget.ArrayAdapter
 import android.widget.SpinnerAdapter
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.jignong.todays_info.MainActivity
+import com.jignong.todays_info.MyAdapter
 import com.jignong.todays_info.databinding.FragmentHomeBinding
 import com.jignong.todays_info.databinding.SpinnerTextBinding
 import kotlinx.coroutines.CoroutineScope
@@ -32,16 +35,20 @@ class HomeFragment : Fragment() {
 
     private val weatherUrl = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query="
     private val covid19Url = "https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%EC%BD%94%EB%A1%9C%EB%82%98+%ED%99%95%EC%A7%84%EC%9E%90&oquery=%EC%A7%80%EC%97%AD+%EB%82%A0%EC%94%A8&tqi=hS%2FEPdprvhGss5t4i6Nssssss6C-509210"
+    private val newsUrl = "https://news.naver.com/main/home.naver"
 
     private val cityarray = arrayOfNulls<String>(18)
+    var news : ArrayList<news> = arrayListOf()
     var weather_city = arrayOf("서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원","충북","충남", "전북", "전남", "경북", "경남", "제주")
     var covid_city = arrayOf("서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원","충북","충남", "전북", "전남", "경북", "경남", "제주", "검역")
+    var category = arrayOf("정치", "경제", "사회", "생활/문화", "세계", "IT/과학")
 
     lateinit var mainActivity : MainActivity
 
     lateinit var weather_textview: TextView
     lateinit var totalcovid_textview: TextView
     lateinit var covid_textview: TextView
+    lateinit var news_recyclerview : RecyclerView
 
 
     override fun onCreateView(
@@ -55,6 +62,7 @@ class HomeFragment : Fragment() {
         weather_textview = binding.weatherTextview
         totalcovid_textview = binding.totalcoivdTextview
         covid_textview = binding.coivdTextview
+        news_recyclerview = binding.newsRecyclerview
 
         //날씨 스피너
         //var weather_city = resources.getStringArray(R.array.weather_city)
@@ -205,6 +213,53 @@ class HomeFragment : Fragment() {
             }
         }
 
+        // 뉴스 카테고리 스피너 추가
+        //var category = resources.getStringArray(R.array.category)
+        var news_adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, category)
+        binding.newsSpinner.adapter = news_adapter
+        binding.newsSpinner.setSelection(0)
+        binding.newsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                when (position) {
+                    0 -> {
+                        news.clear()
+                        getNews(newsUrl, "politics")
+                    }
+                    1 -> {
+                        news.clear()
+                        getNews(newsUrl, "economy")
+                    }
+                    2 -> {
+                        news.clear()
+                        getNews(newsUrl, "society")
+                    }
+                    3 -> {
+                        news.clear()
+                        getNews(newsUrl, "life")
+                    }
+                    4 -> {
+                        news.clear()
+                        getNews(newsUrl, "world")
+                    }
+                    5 -> {
+                        news.clear()
+                        getNews(newsUrl, "it")
+                    }
+                }
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+        }
+
         getCovid(covid19Url, totalcovid_textview)
 
         mBinding = binding
@@ -240,7 +295,7 @@ class HomeFragment : Fragment() {
             val covid = doc.select("#_cs_production_type > div > div.main_tab_area > div > div > ul > li.info_01")
             val total = covid.text().split(" ")
             CoroutineScope(Dispatchers.Main).launch {
-                textView.text = "확진환자 : ${total[1]} (+${total[2]})"
+                textView.text = "확진환자  :  ${total[1]} ( + ${total[2]} )"
                 Log.d(TAG, "$total")
             }
         }
@@ -252,10 +307,37 @@ class HomeFragment : Fragment() {
             val city = doc.select("#_cs_production_type > div > div:nth-child(4) > div > div:nth-child(3) > div:nth-child($x) > div > table > tbody > tr:nth-child($y)")
             val citytotal = city.text().split(" ")
             CoroutineScope(Dispatchers.Main).launch {
-                textView.text = "${citytotal[1]} (+${citytotal[2]})"
+                textView.text = "${citytotal[1]} ( + ${citytotal[2]} )"
                 Log.d(TAG, "${citytotal}")
             }
         }
     }
 
+    private fun getNews(Url : String, category : String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val doc = Jsoup.connect(Url).get()
+            val headline = doc.select("#section_$category > div.com_list > div > ul")
+
+            for (i in 0 until 3) {
+                val title = headline.select("li a").get(i).text()
+                val news_url = headline.select("li a").get(i).attr("href")
+                val writing = headline.select("li span[class=writing]").get(i).text()
+                val list = news(title, news_url, writing)
+                news.add(list)
+            }
+
+            CoroutineScope(Dispatchers.Main).launch {
+                Log.d(TAG, "뉴스 : ${news[0].title}")
+                Log.d(TAG, "링크 : ${news[0].news_url}")
+                Log.d(TAG, "언론사 : ${news[0].writing} ")
+
+                news_recyclerview.layoutManager = LinearLayoutManager(requireContext())
+                news_recyclerview.adapter = MyAdapter(news)
+
+            }
+        }
+    }
+
 }
+
+data class news (val title : String, val news_url : String, val writing : String)
