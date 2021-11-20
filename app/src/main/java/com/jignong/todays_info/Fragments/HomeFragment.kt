@@ -1,8 +1,5 @@
 package com.jignong.todays_info.Fragments
 
-import android.R
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.SpinnerAdapter
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,11 +14,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.jignong.todays_info.MainActivity
 import com.jignong.todays_info.MyAdapter
 import com.jignong.todays_info.databinding.FragmentHomeBinding
-import com.jignong.todays_info.databinding.SpinnerTextBinding
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.jsoup.Jsoup
+import com.jignong.todays_info.R as Resource
 
 class HomeFragment : Fragment() {
 
@@ -37,13 +33,7 @@ class HomeFragment : Fragment() {
     private val covid19Url = "https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%EC%BD%94%EB%A1%9C%EB%82%98+%ED%99%95%EC%A7%84%EC%9E%90&oquery=%EC%A7%80%EC%97%AD+%EB%82%A0%EC%94%A8&tqi=hS%2FEPdprvhGss5t4i6Nssssss6C-509210"
     private val newsUrl = "https://news.naver.com/main/home.naver"
 
-    private val cityarray = arrayOfNulls<String>(18)
     var news : ArrayList<news> = arrayListOf()
-    var weather_city = arrayOf("서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원","충북","충남", "전북", "전남", "경북", "경남", "제주")
-    var covid_city = arrayOf("서울", "부산", "대구", "인천", "광주", "대전", "울산", "세종", "경기", "강원","충북","충남", "전북", "전남", "경북", "경남", "제주", "검역")
-    var category = arrayOf("정치", "경제", "사회", "생활/문화", "세계", "IT/과학")
-
-    lateinit var mainActivity : MainActivity
 
     lateinit var weather_textview: TextView
     lateinit var totalcovid_textview: TextView
@@ -65,9 +55,8 @@ class HomeFragment : Fragment() {
         news_recyclerview = binding.newsRecyclerview
 
         //날씨 스피너
-        //var weather_city = resources.getStringArray(R.array.weather_city)
-        //var weather_adapter = ArrayAdapter<String>(requireContext(), R.layout.spinner_text, weather_city)
-        var weather_adapter = ArrayAdapter<String>(requireContext(), R.layout.simple_list_item_1, weather_city)
+        var weather_city = resources.getStringArray(Resource.array.weather_city)
+        var weather_adapter = ArrayAdapter<String>(requireContext(), Resource.layout.item_spinner, weather_city)
         binding.weatherSpinner.adapter = weather_adapter
         binding.weatherSpinner.setSelection(0)
         binding.weatherSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -138,9 +127,8 @@ class HomeFragment : Fragment() {
         }
 
         //코로나 스피너
-//        var covid_city = resources.getStringArray(R.array.covid_city)
-//        var covid_adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, covid_city)
-        var covid_adapter = ArrayAdapter<String>(requireContext(), R.layout.simple_list_item_1, covid_city)
+        var covid_city = resources.getStringArray(Resource.array.covid_city)
+        var covid_adapter = ArrayAdapter<String>(requireContext(), Resource.layout.item_spinner, covid_city)
         binding.covidSpinner.adapter = covid_adapter
         binding.covidSpinner.setSelection(0)
         binding.covidSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -214,8 +202,8 @@ class HomeFragment : Fragment() {
         }
 
         // 뉴스 카테고리 스피너 추가
-        //var category = resources.getStringArray(R.array.category)
-        var news_adapter = ArrayAdapter<String>(requireContext(), android.R.layout.simple_list_item_1, category)
+        var category = resources.getStringArray(Resource.array.category)
+        var news_adapter = ArrayAdapter<String>(requireContext(), Resource.layout.item_spinner, category)
         binding.newsSpinner.adapter = news_adapter
         binding.newsSpinner.setSelection(0)
         binding.newsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
