@@ -5,9 +5,19 @@
       <map>
         <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/bg_spinner.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/bg_spinner1.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/bottom_icon_color.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/ic_covid.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/ic_down.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/ic_home.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/ic_sunny.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/ic_sunny_click.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/ic_weather.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/menu_selector_color.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/selsector_menu_covid.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/selsector_menu_icon.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/selsector_menu_weather.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/spinner_background.xml" value="0.13425925925925927" />
-        <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/layout/fragment_covid.xml" value="0.1" />
         <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/layout/fragment_friends.xml" value="0.24537037037037038" />
         <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/layout/fragment_home.xml" value="0.1" />

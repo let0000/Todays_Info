@@ -4,16 +4,16 @@
     <item
         android:id="@+id/homeFragment"
         android:title="홈"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/selsector_menu_home"
         />
     <item
         android:id="@+id/weatherFragment"
         android:title="날씨"
-        android:icon="@drawable/ic_weather"
+        android:icon="@drawable/selsector_menu_weather"
         />
     <item
         android:id="@+id/covidFragment"
         android:title="코로나"
-        android:icon="@drawable/ic_covid"
+        android:icon="@drawable/selsector_menu_covid"
         />
 </menu>
