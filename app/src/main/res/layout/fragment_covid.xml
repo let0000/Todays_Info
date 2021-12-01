@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#008CD4"
+    android:background="@drawable/map"
     android:id="@+id/friendsFragment"
     tools:context="com.jignong.todays_info.Fragments.CovidFragment">
 

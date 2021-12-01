@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="#FFE838"
+    android:background="@drawable/map"
     android:id="@+id/friendsFragment"
     tools:context="com.jignong.todays_info.Fragments.WeatherFragment">
 
@@ -11,9 +11,8 @@
         android:id="@+id/friends_Fragment_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="날씨 프래그먼트"
-        android:textSize="50sp"
         android:layout_centerInParent="true"
-        />
+        android:text="날씨 프래그먼트"
+        android:textSize="50sp" />
 
 </RelativeLayout>

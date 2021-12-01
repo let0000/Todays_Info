@@ -35,6 +35,7 @@ class HomeFragment : Fragment() {
 
     var news : ArrayList<news> = arrayListOf()
 
+    lateinit var temp_textview: TextView
     lateinit var weather_textview: TextView
     lateinit var totalcovid_textview: TextView
     lateinit var covid_textview: TextView
@@ -49,6 +50,7 @@ class HomeFragment : Fragment() {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        temp_textview = binding.tempTextview
         weather_textview = binding.weatherTextview
         totalcovid_textview = binding.totalcoivdTextview
         covid_textview = binding.coivdTextview
@@ -68,55 +70,55 @@ class HomeFragment : Fragment() {
             ) {
                 when (position) {
                     0 -> {
-                        getWeather(weatherUrl, "서울", weather_textview)
+                        getWeather(weatherUrl, "서울", temp_textview, weather_textview)
                     }
                     1 -> {
-                        getWeather(weatherUrl, "부산", weather_textview)
+                        getWeather(weatherUrl, "부산", temp_textview, weather_textview)
                     }
                     2 -> {
-                        getWeather(weatherUrl, "대구", weather_textview)
+                        getWeather(weatherUrl, "대구", temp_textview, weather_textview)
                     }
                     3 -> {
-                        getWeather(weatherUrl, "인천", weather_textview)
+                        getWeather(weatherUrl, "인천", temp_textview, weather_textview)
                     }
                     4 -> {
-                        getWeather(weatherUrl, "광주", weather_textview)
+                        getWeather(weatherUrl, "광주", temp_textview, weather_textview)
                     }
                     5 -> {
-                        getWeather(weatherUrl, "대전", weather_textview)
+                        getWeather(weatherUrl, "대전", temp_textview, weather_textview)
                     }
                     6 -> {
-                        getWeather(weatherUrl, "울산", weather_textview)
+                        getWeather(weatherUrl, "울산", temp_textview, weather_textview)
                     }
                     7 -> {
-                        getWeather(weatherUrl, "세종", weather_textview)
+                        getWeather(weatherUrl, "세종", temp_textview, weather_textview)
                     }
                     8 -> {
-                        getWeather(weatherUrl, "경기", weather_textview)
+                        getWeather(weatherUrl, "경기", temp_textview, weather_textview)
                     }
                     9 -> {
-                        getWeather(weatherUrl, "강원", weather_textview)
+                        getWeather(weatherUrl, "강원", temp_textview, weather_textview)
                     }
                     10 -> {
-                        getWeather(weatherUrl, "충북", weather_textview)
+                        getWeather(weatherUrl, "충북", temp_textview, weather_textview)
                     }
                     11 -> {
-                        getWeather(weatherUrl, "충남", weather_textview)
+                        getWeather(weatherUrl, "충남", temp_textview, weather_textview)
                     }
                     12 -> {
-                        getWeather(weatherUrl, "전북", weather_textview)
+                        getWeather(weatherUrl, "전북", temp_textview, weather_textview)
                     }
                     13 -> {
-                        getWeather(weatherUrl, "전남", weather_textview)
+                        getWeather(weatherUrl, "전남", temp_textview, weather_textview)
                     }
                     14 -> {
-                        getWeather(weatherUrl, "경북", weather_textview)
+                        getWeather(weatherUrl, "경북", temp_textview, weather_textview)
                     }
                     15 -> {
-                        getWeather(weatherUrl, "경남", weather_textview)
+                        getWeather(weatherUrl, "경남", temp_textview, weather_textview)
                     }
                     16 -> {
-                        getWeather(weatherUrl, "제주", weather_textview)
+                        getWeather(weatherUrl, "제주", temp_textview, weather_textview)
                     }
                 }
             }
@@ -260,7 +262,7 @@ class HomeFragment : Fragment() {
         super.onDestroyView()
     }
 
-    private fun getWeather(Url : String, city : String, textView: TextView){
+    private fun getWeather(Url : String, city : String, temp: TextView, weather: TextView){
         CoroutineScope(Dispatchers.IO).launch {
             val doc = Jsoup.connect(Url + city + "날씨").get()
             val temple = doc.select(".temperature_text")
@@ -269,8 +271,8 @@ class HomeFragment : Fragment() {
             val summaryarray = comparison.text().split(" ")
 
             CoroutineScope(Dispatchers.Main).launch {
-                textView.text = "기온 $tem / ${summaryarray[3]} \n " +
-                        "${summaryarray[0]} ${summaryarray[1]} ${summaryarray[2]}"
+                temp.text = "기온 $tem / ${summaryarray[3]} "
+                weather.text = "${summaryarray[0]} ${summaryarray[1]} ${summaryarray[2]}"
                 Log.d(TAG, "$summaryarray")
                 Log.d(TAG, "$city : $tem")
             }
@@ -306,7 +308,7 @@ class HomeFragment : Fragment() {
             val doc = Jsoup.connect(Url).get()
             val headline = doc.select("#section_$category > div.com_list > div > ul")
 
-            for (i in 0 until 3) {
+            for (i in 0 until 5) {
                 val title = headline.select("li a").get(i).text()
                 val news_url = headline.select("li a").get(i).attr("href")
                 val writing = headline.select("li span[class=writing]").get(i).text()

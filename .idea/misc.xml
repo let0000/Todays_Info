@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/bg_cardview.xml" value="0.11388888888888889" />
+        <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/bg_cardview_light.xml" value="0.11388888888888889" />
+        <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/bg_covid_cardview.xml" value="0.11388888888888889" />
         <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/bg_spinner.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/bg_spinner1.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/bottom_icon_color.xml" value="0.12037037037037036" />
+        <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/cardview_background.xml" value="0.11388888888888889" />
         <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/ic_covid.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/ic_down.xml" value="0.12037037037037036" />
         <entry key="..\:/Users/qwer7/AndroidStudioProjects/androidProject/kotlin/Jsoup/Todays_Info/app/src/main/res/drawable/ic_home.xml" value="0.12037037037037036" />
