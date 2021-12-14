@@ -1,18 +1,343 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/friendsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/map"
-    android:id="@+id/friendsFragment"
     tools:context="com.jignong.todays_info.Fragments.WeatherFragment">
 
-    <TextView
-        android:id="@+id/friends_Fragment_title"
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="날씨 프래그먼트"
-        android:textSize="50sp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="125dp"
+        android:layout_marginStart="40dp">
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/incheon_weather_textview"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="인천\n ... \n ..."
+             />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="105dp"
+        android:layout_marginStart="105dp">
+
+        <TextView
+            android:id="@+id/seoul_weather_textview"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="서울\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="170dp">
+
+        <TextView
+            android:id="@+id/chuncheon_weather_textview"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="춘천\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginEnd="115dp">
+
+        <TextView
+            android:id="@+id/gangneung_weather_textview"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="강릉\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="20dp">
+
+        <TextView
+            android:id="@+id/ulleungdo_weather_textview"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="울릉도\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="210dp"
+        android:layout_marginStart="90dp">
+
+        <TextView
+            android:id="@+id/sejong_weather_textview"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="세종\n ... \n ..."
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginStart="160dp">
+
+        <TextView
+            android:id="@+id/cheongju_weather_textview"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="청주\n ... \n ..."
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginStart="155dp">
+
+        <TextView
+            android:id="@+id/daejeon_weather_textview"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="대전\n ... \n ..."
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="310dp"
+        android:layout_marginEnd="155dp">
+
+        <TextView
+            android:id="@+id/daegu_weather_textview"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="대구\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="260dp"
+        android:layout_marginEnd="90dp">
+
+        <TextView
+            android:id="@+id/pohang_weather_textview"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="포항\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="325dp"
+        android:layout_marginEnd="80dp">
+
+        <TextView
+            android:id="@+id/ulsan_weather_textview"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="울산\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="390dp"
+        android:layout_marginEnd="110dp">
+
+        <TextView
+            android:id="@+id/busan_weather_textview"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="부산\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="330dp"
+        android:layout_marginStart="130dp">
+
+        <TextView
+            android:id="@+id/jeonju_weather_textview"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="전주\n ... \n ..."
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="400dp"
+        android:layout_marginStart="120dp">
+
+        <TextView
+            android:id="@+id/gwangju_weather_textview"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="광주\n ... \n ..."
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="440dp"
+        android:layout_marginStart="50dp">
+
+        <TextView
+            android:id="@+id/mokpo_weather_textview"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="목포\n ... \n ..."
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/jeju_weather_textview"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="제주\n ... \n ..."
+            />
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
