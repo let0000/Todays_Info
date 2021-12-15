@@ -154,7 +154,7 @@ class HomeFragment : Fragment() {
                         getCityCovid(covid19Url, covid_textview, 1,3)
                     }
                     4 -> {
-                        getCityCovid(covid19Url, covid_textview, 2,6)
+                        getCityCovid(covid19Url, covid_textview, 2,5)
                     }
                     5 -> {
                         getCityCovid(covid19Url, covid_textview, 2,2)
@@ -169,16 +169,16 @@ class HomeFragment : Fragment() {
                         getCityCovid(covid19Url, covid_textview, 1,2)
                     }
                     9 -> {
-                        getCityCovid(covid19Url, covid_textview, 2,3)
+                        getCityCovid(covid19Url, covid_textview, 2,1)
                     }
                     10 -> {
-                        getCityCovid(covid19Url, covid_textview, 2,1)
+                        getCityCovid(covid19Url, covid_textview, 2,3)
                     }
                     11 -> {
                         getCityCovid(covid19Url, covid_textview, 1,7)
                     }
                     12 -> {
-                        getCityCovid(covid19Url, covid_textview, 2,5)
+                        getCityCovid(covid19Url, covid_textview, 2,4)
                     }
                     13 -> {
                         getCityCovid(covid19Url, covid_textview, 2,8)
@@ -193,7 +193,7 @@ class HomeFragment : Fragment() {
                         getCityCovid(covid19Url, covid_textview, 3,1)
                     }
                     17 -> {
-                        getCityCovid(covid19Url, covid_textview, 2,4)
+                        getCityCovid(covid19Url, covid_textview, 2,6)
                     }
                 }
             }
@@ -203,52 +203,52 @@ class HomeFragment : Fragment() {
             }
         }
 
-        // 뉴스 카테고리 스피너 추가
-        var category = resources.getStringArray(Resource.array.category)
-        var news_adapter = ArrayAdapter<String>(requireContext(), Resource.layout.item_spinner, category)
-        binding.newsSpinner.adapter = news_adapter
-        binding.newsSpinner.setSelection(0)
-        binding.newsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(
-                parent: AdapterView<*>?,
-                view: View?,
-                position: Int,
-                id: Long
-            ) {
-                when (position) {
-                    0 -> {
-                        news.clear()
-                        getNews(newsUrl, "politics")
-                    }
-                    1 -> {
-                        news.clear()
-                        getNews(newsUrl, "economy")
-                    }
-                    2 -> {
-                        news.clear()
-                        getNews(newsUrl, "society")
-                    }
-                    3 -> {
-                        news.clear()
-                        getNews(newsUrl, "life")
-                    }
-                    4 -> {
-                        news.clear()
-                        getNews(newsUrl, "world")
-                    }
-                    5 -> {
-                        news.clear()
-                        getNews(newsUrl, "it")
-                    }
-                }
-
-            }
-
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-
-            }
-
-        }
+//        // 뉴스 카테고리 스피너 추가
+//        var category = resources.getStringArray(Resource.array.category)
+//        var news_adapter = ArrayAdapter<String>(requireContext(), Resource.layout.item_spinner, category)
+//        binding.newsSpinner.adapter = news_adapter
+//        binding.newsSpinner.setSelection(0)
+//        binding.newsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(
+//                parent: AdapterView<*>?,
+//                view: View?,
+//                position: Int,
+//                id: Long
+//            ) {
+//                when (position) {
+//                    0 -> {
+//                        news.clear()
+//                        getNews(newsUrl, "politics")
+//                    }
+//                    1 -> {
+//                        news.clear()
+//                        getNews(newsUrl, "economy")
+//                    }
+//                    2 -> {
+//                        news.clear()
+//                        getNews(newsUrl, "society")
+//                    }
+//                    3 -> {
+//                        news.clear()
+//                        getNews(newsUrl, "life")
+//                    }
+//                    4 -> {
+//                        news.clear()
+//                        getNews(newsUrl, "world")
+//                    }
+//                    5 -> {
+//                        news.clear()
+//                        getNews(newsUrl, "it")
+//                    }
+//                }
+//
+//            }
+//
+//            override fun onNothingSelected(parent: AdapterView<*>?) {
+//
+//            }
+//
+//        }
 
         getCovid(covid19Url, totalcovid_textview)
 

@@ -1,19 +1,406 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/friendsFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@drawable/map"
-    android:id="@+id/friendsFragment"
     tools:context="com.jignong.todays_info.Fragments.CovidFragment">
 
+    <ImageView
+        android:id="@+id/covid_image"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/ic_covid"
+        android:layout_marginStart="40dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
     <TextView
-        android:id="@+id/friends_Fragment_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="코로나 프래그먼트"
-        android:textSize="50sp"
-        android:layout_centerInParent="true"
-        />
+        android:text="지역별 코로나 현황"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/covid_image"/>
 
-</RelativeLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="125dp"
+        android:layout_marginStart="20dp">
+
+        <TextView
+            android:id="@+id/incheon_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="인천\n ... \n ..."
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="105dp"
+        android:layout_marginStart="95dp">
+
+        <TextView
+            android:id="@+id/seoul_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="서울\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="90dp"
+        android:layout_marginStart="170dp">
+
+        <TextView
+            android:id="@+id/gyeonggi_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="경기\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginEnd="95dp">
+
+        <TextView
+            android:id="@+id/gangwon_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="강원\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="110dp"
+        android:layout_marginEnd="20dp">
+
+        <TextView
+            android:id="@+id/quarantine_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="검역\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginStart="80dp">
+
+        <TextView
+            android:id="@+id/chungnam_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="충남\n ... \n ..."
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="270dp"
+        android:layout_marginStart="75dp">
+
+        <TextView
+            android:id="@+id/sejong_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="세종\n ... \n ..."
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginStart="160dp">
+
+        <TextView
+            android:id="@+id/chungbuk_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="충북\n ... \n ..."
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="250dp"
+        android:layout_marginStart="155dp">
+
+        <TextView
+            android:id="@+id/daejeon_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="대전\n ... \n ..."
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="320dp"
+        android:layout_marginEnd="150dp">
+
+        <TextView
+            android:id="@+id/daegu_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="대구\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="220dp"
+        android:layout_marginEnd="100dp">
+
+        <TextView
+            android:id="@+id/gyeongbuk_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="경북\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="305dp"
+        android:layout_marginEnd="70dp">
+
+        <TextView
+            android:id="@+id/ulsan_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="울산\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="390dp"
+        android:layout_marginEnd="150dp">
+
+        <TextView
+            android:id="@+id/kyungnam_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="경남\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="380dp"
+        android:layout_marginEnd="70dp">
+
+        <TextView
+            android:id="@+id/busan_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:text="부산\n ... \n ..."
+            android:textColor="@color/black" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="340dp"
+        android:layout_marginStart="110dp">
+
+        <TextView
+            android:id="@+id/jeonbuk_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="전북\n ... \n ..."
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="410dp"
+        android:layout_marginStart="110dp">
+
+        <TextView
+            android:id="@+id/jeonnam_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="전남\n ... \n ..."
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginTop="420dp"
+        android:layout_marginStart="30dp">
+
+        <TextView
+            android:id="@+id/gwangju_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="광주\n ... \n ..."
+            />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:id="@+id/jeju_covid_textview"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="제주\n ... \n ..."
+            />
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
