@@ -31,7 +31,7 @@ class HomeFragment : Fragment() {
 
     private val weatherUrl = "https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query="
     private val covid19Url = "https://search.naver.com/search.naver?sm=tab_hty.top&where=nexearch&query=%EC%BD%94%EB%A1%9C%EB%82%98+%ED%99%95%EC%A7%84%EC%9E%90&oquery=%EC%A7%80%EC%97%AD+%EB%82%A0%EC%94%A8&tqi=hS%2FEPdprvhGss5t4i6Nssssss6C-509210"
-    private val newsUrl = "https://news.naver.com/main/home.naver"
+    private val newsUrl = "https://news.naver.com/main/tv/index.naver?mid=tvh"
 
     var news : ArrayList<news> = arrayListOf()
 
@@ -203,52 +203,56 @@ class HomeFragment : Fragment() {
             }
         }
 
-//        // 뉴스 카테고리 스피너 추가
-//        var category = resources.getStringArray(Resource.array.category)
-//        var news_adapter = ArrayAdapter<String>(requireContext(), Resource.layout.item_spinner, category)
-//        binding.newsSpinner.adapter = news_adapter
-//        binding.newsSpinner.setSelection(0)
-//        binding.newsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//            override fun onItemSelected(
-//                parent: AdapterView<*>?,
-//                view: View?,
-//                position: Int,
-//                id: Long
-//            ) {
-//                when (position) {
-//                    0 -> {
-//                        news.clear()
-//                        getNews(newsUrl, "politics")
-//                    }
-//                    1 -> {
-//                        news.clear()
-//                        getNews(newsUrl, "economy")
-//                    }
-//                    2 -> {
-//                        news.clear()
-//                        getNews(newsUrl, "society")
-//                    }
-//                    3 -> {
-//                        news.clear()
-//                        getNews(newsUrl, "life")
-//                    }
-//                    4 -> {
-//                        news.clear()
-//                        getNews(newsUrl, "world")
-//                    }
-//                    5 -> {
-//                        news.clear()
-//                        getNews(newsUrl, "it")
-//                    }
-//                }
-//
-//            }
-//
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//
-//            }
-//
-//        }
+        // 뉴스 카테고리 스피너 추가
+        var category = resources.getStringArray(Resource.array.category)
+        var news_adapter = ArrayAdapter<String>(requireContext(), Resource.layout.item_spinner, category)
+        binding.newsSpinner.adapter = news_adapter
+        binding.newsSpinner.setSelection(0)
+        binding.newsSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                when (position) {
+                    0 -> {
+                        news.clear()
+                        getNews(newsUrl, "2")
+                    }
+                    1 -> {
+                        news.clear()
+                        getNews(newsUrl, "3")
+                    }
+                    2 -> {
+                        news.clear()
+                        getNews(newsUrl, "4")
+                    }
+                    3 -> {
+                        news.clear()
+                        getNews(newsUrl, "5")
+                    }
+                    4 -> {
+                        news.clear()
+                        getNews(newsUrl, "6")
+                    }
+                    5 -> {
+                        news.clear()
+                        getNews(newsUrl, "7")
+                    }
+                    6 -> {
+                        news.clear()
+                        getNews(newsUrl, "8")
+                    }
+                }
+
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+        }
 
         getCovid(covid19Url, totalcovid_textview)
 
@@ -303,23 +307,22 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun getNews(Url : String, category : String){
+    private fun getNews(Url : String , category : String){
         CoroutineScope(Dispatchers.IO).launch {
             val doc = Jsoup.connect(Url).get()
-            val headline = doc.select("#section_$category > div.com_list > div > ul")
+            val headline = doc.select("#wrap > table > tbody > tr > td.content > div > div > div:nth-child($category) > ul")
 
-            for (i in 0 until 5) {
-                val title = headline.select("li a").get(i).text()
+
+            for (i in 0 until 4) {
+                val title = headline.select("li p").get(i).text()
                 val news_url = headline.select("li a").get(i).attr("href")
-                val writing = headline.select("li span[class=writing]").get(i).text()
-                val list = news(title, news_url, writing)
+                val list = news(title, news_url)
                 news.add(list)
             }
 
             CoroutineScope(Dispatchers.Main).launch {
-                Log.d(TAG, "뉴스 : ${news[0].title}")
-                Log.d(TAG, "링크 : ${news[0].news_url}")
-                Log.d(TAG, "언론사 : ${news[0].writing} ")
+                Log.d(TAG, "뉴스 : ${news[0].title}, ${news[1].title}")
+                Log.d(TAG, "링크 : ${news[0].news_url} , ${news[1].news_url}")
 
                 news_recyclerview.layoutManager = LinearLayoutManager(requireContext())
                 news_recyclerview.adapter = MyAdapter(news)
@@ -327,7 +330,6 @@ class HomeFragment : Fragment() {
             }
         }
     }
-
 }
 
-data class news (val title : String, val news_url : String, val writing : String)
+data class news (val title : String, val news_url : String)

@@ -25,9 +25,6 @@ class MyAdapter(val items: ArrayList<news>) : RecyclerView.Adapter<MyAdapter.Vie
 
     override fun onBindViewHolder(holder: MyAdapter.ViewHolder, position: Int) {
         holder.binding.newsTextview.text = items[position].title
-        //holder.binding.newsTextview.setTextColor(Color.WHITE)
-        holder.binding.writingTextview.text = items[position].writing
-        //holder.binding.writingTextview.setTextColor(Color.WHITE)
 
         // 뉴스 클릭 시 링크 이동 추가
         holder.itemView.setOnClickListener {
